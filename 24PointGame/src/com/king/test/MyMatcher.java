@@ -8,15 +8,26 @@ import java.util.regex.Pattern;
  *
  */
 public class MyMatcher {
-	
-	public static boolean match(String exprection){
-		Matcher matcher=Pattern.compile("^((?:(\\d+\\)+)|\\d+|(\\(+\\d+))[\\+|\\-|\\*|/])+(?:(\\d+\\)+)|\\d+)$")
-	            .matcher(exprection);
+	/**
+	 * 
+	 * @param exprection
+	 * @param ints
+	 * @return
+	 */
+	public static boolean match(String exprection,int[] ints){
+//		Matcher matcher=Pattern.compile("^((?:(\\d+\\)+)|\\d+|(\\(+\\d+))[\\+|\\-|\\*|/])+(?:(\\d+\\)+)|\\d+)$")
+//	            .matcher(exprection);
+		
+		//限定数字
+		String num = "["+ints[0]+"|"+ints[1]+"|"+ints[2]+"|"+ints[3]+"]";
+		String regex = "^((?:("+num+"+\\)+)|"+num+"+|(\\(+"+num+"+))[\\+|\\-|\\*|/])+(?:("+num+"+\\)+)|"+num+"+)$";
+		Matcher matcher=Pattern.compile(regex).matcher(exprection);
 		return matcher.find();
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(MyMatcher.match("24"));//false
+		int [] ints = {1,2,3,4};
+		System.out.println(MyMatcher.match("1+4*(3+2)",ints));//true
 	}
 
 }

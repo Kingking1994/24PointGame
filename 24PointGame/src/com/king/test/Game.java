@@ -53,10 +53,14 @@ public class Game {
 			long start = System.currentTimeMillis();
 			
 			
-			
+			//转换类型，float to int
 			float [] num = data.arr;
+			int []ints = new int [4];
+			for (int i = 0; i < num.length; i++) {
+				ints[i] = (int)num[i];
+			}
 			System.out.println();
-			System.out.println((int)num[0]+"  "+(int)num[1]+"  "+(int)num[2]+"  "+(int)num[3]);
+			System.out.println(ints[0]+"  "+ints[1]+"  "+ints[2]+"  "+ints[3]);
 			System.out.println("请输入算术表达式：");
 			
 			while(true){
@@ -85,9 +89,9 @@ public class Game {
 					System.out.println(">>>>>>>>>>>>我是分隔线>>>>>>>>>>>>>>>>>");
 					System.out.println();
 					//判断数据库是否存在答案，否则保存
-					if (!DBController.exists(data)) {
-						DBController.save(resultSet, data);
-					}
+//					if (!DBController.exists(data)) {
+//						DBController.save(resultSet, data);
+//					}
 					break;
 				}else if(input.equals("3")){
 					System.out.println("**********************");
@@ -99,7 +103,7 @@ public class Game {
 					break;
 				}else{
 					//判断输入是否合法的表达式
-					if (MyMatcher.match(input)) {
+					if (MyMatcher.match(input,ints)) {
 						Calculator calculator = new Calculator();
 						long end = System.currentTimeMillis();
 						double resultDouble = calculator.calculate(input);
