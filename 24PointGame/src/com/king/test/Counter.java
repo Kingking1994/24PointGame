@@ -2,6 +2,8 @@ package com.king.test;
 
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 计算结果类
@@ -106,19 +108,17 @@ public class Counter {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        /*long start=System.currentTimeMillis();
-        Data d=new Data(1,2,3,4);
-        count(d);
+//        long start=System.currentTimeMillis();
+//        Data d=new Data(1,2,3,4);
+//        count(d);
+//         
+//        System.out.println(System.currentTimeMillis()-start);
+//        Random random=new Random();
+//        for (int i = 0; i < 10; i++) {
+//            System.out.println(random.nextDouble());
+//        }
          
-        System.out.println(System.currentTimeMillis()-start);*/
-        /*Random random=new Random();
-        for (int i = 0; i < 10; i++) {
-            System.out.println(random.nextDouble());
-        }*/
-         
-        /*Matcher matcher=Pattern.compile("^((?:(\\d+\\)+)|\\d+|(\\(+\\d+))[\\+|\\-|\\*|/])+(?:(\\d+\\)+)|\\d+)$")
-            .matcher("(9-1)*(10-7)");
-        System.out.println(matcher.find());*/
+        
 //        long start=System.currentTimeMillis();
 //        Data data=new Data(3, 3, 1, 12);
 //        Counter counter = new Counter();

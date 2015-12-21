@@ -37,7 +37,7 @@ public class Game {
 			Counter counter = new Counter();
 			counter.count(data);
 			Set<String> resultSet= counter.getResultSet();
-			//判断这组数据是否有解，误解就跳过，重新生成data
+			//判断这组数据是否有解，无解就跳过，重新生成data
 			if (resultSet == null) {
 				continue;
 			}
@@ -98,26 +98,31 @@ public class Game {
 					playing = false;
 					break;
 				}else{
-					Calculator calculator = new Calculator();
-					long end = System.currentTimeMillis();
-					double resultDouble = calculator.calculate(input);
-					if (resultDouble == 24) {
-						System.out.println("     *    *    *   *      *  *");
-						System.out.println("  *   *    *    *     *    *");
-						System.out.println("    *     *    *   *    *");
-						System.out.println("   答对了，太棒了，民族英雄啊     ");
-						System.out.println("     用了"+(end-start)/1000+"s就做出来了");
-						System.out.println("  *   *   *  *    *   **  *");
-						System.out.println("    *   *    * *  *  *   *");
-						System.out.println("  *    *   *    *    *   * *  *");
-						System.out.println("进入下一道题》》》》》》》》》》》");
-						
-						System.out.println();
-						System.out.println(">>>>>>>>>>>>我是分隔线>>>>>>>>>>>>>>>>>");
-						System.out.println();
-						break;
+					//判断输入是否合法的表达式
+					if (MyMatcher.match(input)) {
+						Calculator calculator = new Calculator();
+						long end = System.currentTimeMillis();
+						double resultDouble = calculator.calculate(input);
+						if (resultDouble == 24) {
+							System.out.println("     *    *    *   *      *  *");
+							System.out.println("  *   *    *    *     *    *");
+							System.out.println("    *     *    *   *    *");
+							System.out.println("   答对了，太棒了，民族英雄啊     ");
+							System.out.println("     用了"+(end-start)/1000+"s就做出来了");
+							System.out.println("  *   *   *  *    *   **  *");
+							System.out.println("    *   *    * *  *  *   *");
+							System.out.println("  *    *   *    *    *   * *  *");
+							System.out.println("进入下一道题》》》》》》》》》》》");
+							
+							System.out.println();
+							System.out.println(">>>>>>>>>>>>我是分隔线>>>>>>>>>>>>>>>>>");
+							System.out.println();
+							break;
+						}else{
+							System.out.println("不对，你太笨了，赶紧再答一次，用实力证明自己吧！");
+						}
 					}else{
-						System.out.println("不对，你太笨了，赶紧再答一次，用实力证明自己吧！");
+						System.out.println("哎呦喂，你输入的表达式不合法啊，再试试吧！！！");
 					}
 				}
 			}
