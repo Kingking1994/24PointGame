@@ -89,9 +89,9 @@ public class Game {
 					System.out.println(">>>>>>>>>>>>我是分隔线>>>>>>>>>>>>>>>>>");
 					System.out.println();
 					//判断数据库是否存在答案，否则保存
-//					if (!DBController.exists(data)) {
-//						DBController.save(resultSet, data);
-//					}
+					if (!DBController.exists(data)) {
+						DBController.save(resultSet, data);
+					}
 					break;
 				}else if(input.equals("3")){
 					System.out.println("**********************");
