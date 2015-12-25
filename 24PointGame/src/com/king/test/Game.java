@@ -108,6 +108,12 @@ public class Game {
 						long end = System.currentTimeMillis();
 						double resultDouble = calculator.calculate(input);
 						if (resultDouble == 24) {
+							
+							//判断数据库是否存在答案，否则保存
+							if (!DBController.exists(data)) {
+								DBController.save(resultSet, data);
+							}
+							
 							System.out.println("     *    *    *   *      *  *");
 							System.out.println("  *   *    *    *     *    *");
 							System.out.println("    *     *    *   *    *");
